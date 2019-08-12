@@ -66,6 +66,11 @@ function submit(selected) {
     });
 }
 
+
+function isNull(str) {
+    return (!str || str.length === 0 || /^\s*$/.test(str))
+}
+
 function addQuestion() {
     data = {
         submit: true,
@@ -79,38 +84,47 @@ function addQuestion() {
         answer: document.getElementById('answer').value.trim(),
         explanation: document.getElementById('explanation').value.trim()
     };
-    $.ajax({
-        type: 'POST',
-        data: data,
-        url: '//' + location.hostname + '/mcq/addQuestion.php',
-        success: function (data) {
-            if (data) {
-                document.getElementById('question').value = '';
-                document.getElementById('code').value = '';
-                document.getElementById('op1').value = '';
-                document.getElementById('op2').value = '';
-                document.getElementById('op3').value = '';
-                document.getElementById('op4').value = '';
-                document.getElementById('answer').options[0].selected = true;
-                document.getElementById('explanation').value = '';
-                document.getElementById('success').classList.toggle('show');
-                setTimeout(function () {
+    // if(data.chapter != '' && data.op1 != '' && data.op2 != '' && data.op3 != '' && data.op4 != ''){
+    if (isNull(data.chapter) || isNull(data.op1) || isNull(data.op2) || isNull(data.op) || isNull(data.op4)) {
+        document.getElementById('require').classList.toggle('show');
+        setTimeout(function () {
+            document.getElementById('require').classList.toggle('show');
+        }, 3000);
+    } else {
+        $.ajax({
+            type: 'POST',
+            data: data,
+            url: '//' + location.hostname + '/mcq/addQuestion.php',
+            success: function (data) {
+                if (data) {
+                    document.getElementById('lastQ').innerText = document.getElementById('question').value;
+                    document.getElementById('question').value = '';
+                    document.getElementById('code').value = '';
+                    document.getElementById('op1').value = '';
+                    document.getElementById('op2').value = '';
+                    document.getElementById('op3').value = '';
+                    document.getElementById('op4').value = '';
+                    document.getElementById('answer').options[0].selected = true;
+                    document.getElementById('explanation').value = '';
                     document.getElementById('success').classList.toggle('show');
-                }, 1000);
-            }
-            else {
+                    setTimeout(function () {
+                        document.getElementById('success').classList.toggle('show');
+                    }, 1000);
+                }
+                else {
+                    document.getElementById('failed').classList.toggle('show');
+                    setTimeout(function () {
+                        document.getElementById('failed').classList.toggle('show');
+                    }, 1000);
+                }
+            },
+            error: function () {
                 document.getElementById('failed').classList.toggle('show');
                 setTimeout(function () {
                     document.getElementById('failed').classList.toggle('show');
-                },1000);
-            }
-        },
-        error: function () {
-            document.getElementById('failed').classList.toggle('show');
-            setTimeout(function () {
-                document.getElementById('failed').classList.toggle('show');
-            }, 1000);
-        },
-        dataType: "json"
-    });
+                }, 1000);
+            },
+            dataType: "json"
+        });
+    }
 }

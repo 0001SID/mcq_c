@@ -25,17 +25,23 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <div class="alert alert-danger alert-dismissible fade fixed-top" role="alert" id = "require">
+          Please fill all the question and option field
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
     <form action="" method="post">
       <div class="row">
 
         <div class="col">
           <div class="form-group">
             <label for="chapter" class="font-weight-bold">Chapter</label>
-            <input type="text" class="form-control" name="chapter" id="chapter" placeholder="Chapter">
+            <input type="text" required class="form-control" name="chapter" id="chapter" placeholder="Chapter">
           </div>
           <div class="form-group">
             <label for="question" class="font-weight-bold">Question</label>
-            <input autocomplete = "off" type="text" class="form-control" name="question" id="question" placeholder="Place your question">
+            <input required autocomplete = "off" type="text" class="form-control" name="question" id="question" placeholder="Place your question">
           </div>
           <div class="form-group">
             <label for="code" class="font-weight-bold">Code (If any)</label>
@@ -46,17 +52,18 @@
       <div class="row">
         <div class="col">
           <div class="form-group">
-            <input autocomplete = "off" type="text" class="form-control" name="op1" id="op1" placeholder="Option 1">
+            <input required autocomplete = "off" type="text" class="form-control" name="op1" id="op1" placeholder="Option 1">
           </div>
           <div class="form-group">
-            <input autocomplete = "off" type="text" class="form-control" name="op2" id="op2" placeholder="Option 2">
+            <input required autocomplete = "off" type="text" class="form-control" name="op2" id="op2" placeholder="Option 2">
           </div>
           <div class="form-group">
-            <input autocomplete = "off" type="text" class="form-control" name="op3" id="op3" placeholder="Option 3">
+            <input required autocomplete = "off" type="text" class="form-control" name="op3" id="op3" placeholder="Option 3">
           </div>
           <div class="form-group">
-            <input autocomplete = "off" type="text" class="form-control" name="op4" id="op4" placeholder="Option 4">
+            <input required autocomplete = "off" type="text" class="form-control" name="op4" id="op4" placeholder="Option 4">
           </div>
+          <p><strong>Last Question:</strong><p id = "lastQ"></p></p>
         </div>
         <div class="col">
           <div class="container">
