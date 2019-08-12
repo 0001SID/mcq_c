@@ -60,3 +60,6 @@ body{
 .dis-none{
     display: none;
 }
+.copyright{
+    text-decoration: none !important;
+}

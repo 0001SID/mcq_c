@@ -140,6 +140,9 @@ if (isset($_POST['chapterSearch'])) {
         </div>
         </form>
     <?php endif; ?>
+    <footer>
+    <p class = 'fixed-bottom text-right pr-3'>Copyright &copy;2019 <a class = "copyright" target="_blank" href = "https://sidni.dev">Suman Das</a></p>
+    </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
