@@ -1,7 +1,8 @@
 <?php
 require "./db/connection.php";
 if (isset($_POST['chapterSearch'])) {
-    $questionQ = $conn->prepare("select * from questions");
+    $questionQ = $conn->prepare("select * from questions where chapter = :chapter");
+    $questionQ->bindValue(':chapter',htmlentities($_POST['chapterName']));
     $questionQ->execute();
     $questions = $questionQ->fetchAll();
     $alp = ['A', 'B', 'C', 'D'];
