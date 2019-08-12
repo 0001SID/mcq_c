@@ -86,11 +86,7 @@ function addQuestion() {
     };
     if(data.chapter != '' && data.op1 != '' && data.op2 != '' && data.op3 != '' && data.op4 != ''){
     // if (isNull(data.chapter) || isNull(data.op1) || isNull(data.op2) || isNull(data.op) || isNull(data.op4)) {
-        document.getElementById('require').classList.toggle('show');
-        setTimeout(function () {
-            document.getElementById('require').classList.toggle('show');
-        }, 3000);
-    } else {
+        
         $.ajax({
             type: 'POST',
             data: data,
@@ -126,5 +122,10 @@ function addQuestion() {
             },
             dataType: "json"
         });
+    } else {
+        document.getElementById('require').classList.toggle('show');
+        setTimeout(function () {
+            document.getElementById('require').classList.toggle('show');
+        }, 3000);
     }
 }
