@@ -45,7 +45,7 @@ if (isset($_POST['chapterSearch'])) {
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="container body-pos">
             <div class="row">
-                <div class="col-5">
+                <div class="col-md-5 mr-3 mr-md-0">
                     <div class="form-group">
                         <label for="chapterName">Chapter</label>
                         <select class="custom-select" name="chapterName" id="chapterName">
