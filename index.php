@@ -123,7 +123,8 @@ if (isset($_POST['chapterSearch'])) {
             <div class="row">
                 <div class='dis-none animated body-pos'>
                     <h3>You Scored: <span id='res'></span>/<?= $count - 1 ?></h3>
-                    <button type="button" onclick="location.reload()" class="btn btn-outline-primary mt-5 ml-1 px-4">Repeat</button>
+                    <!-- <button type="button" onclick="location.reload()" class="btn btn-outline-primary mt-5 ml-1 px-4">Repeat</button> -->
+                    <a name="" id="" class="btn btn-outline-primary mt-5 ml-1 px-4" href="index.php" role="button">Repeat</a>
                 </div>
             </div>
         </div>
