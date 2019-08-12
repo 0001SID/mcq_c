@@ -26,7 +26,7 @@
           </button>
         </div>
         <div class="alert alert-danger alert-dismissible fade fixed-top" role="alert" id = "require">
-          Please fill all the question and option field
+          Please fill Chapter, question and all option field
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
