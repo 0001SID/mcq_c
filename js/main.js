@@ -84,7 +84,7 @@ function addQuestion() {
         answer: document.getElementById('answer').value.trim(),
         explanation: document.getElementById('explanation').value.trim()
     };
-    if(data.chapter != '' && data.op1 != '' && data.op2 != '' && data.op3 != '' && data.op4 != ''){
+    if(data.chapter != '' && data.op1 != '' && data.op2 != ''){
     // if (isNull(data.chapter) || isNull(data.op1) || isNull(data.op2) || isNull(data.op) || isNull(data.op4)) {
         
         $.ajax({
