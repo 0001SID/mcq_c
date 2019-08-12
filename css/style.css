@@ -1,0 +1,51 @@
+body{
+    background-image: url("../images/quizbg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: cover;
+    color: white;
+}
+.body-pos{
+    margin-top:15%;
+    margin-left:16%;
+}
+@media only screen and (max-width: 756px){
+    .width-56{
+        width:100% !important;
+    }
+    .width-option{
+        background-color:yellow;
+        width:90% !important;
+    }
+    .body-pos{
+        margin-top:15%;
+        margin-left:2%;
+    }
+}
+.width-56{
+    width: 56%;
+}
+.width-option{
+    width: 90%;
+}
+.option-box{
+    background-color:#282B2B;
+}
+.option-box:hover{
+    background-color: rgba(233, 233, 233,0.3);
+    cursor: pointer;
+}
+.option-no{
+    color: black;
+    background-color:rgb(233, 233, 233);
+    font-weight: bold;
+}
+.hide{
+    visibility: hidden;
+}
+.show{
+    visibility: visible;
+}
+.dis-none{
+    display: none;
+}
