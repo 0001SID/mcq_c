@@ -2,7 +2,7 @@
 require "./db/connection.php";
 if (isset($_POST['chapterSearch'])) {
     $questionQ = $conn->prepare("select * from questions where chapter = :chapter");
-    $questionQ->bindValue(':chapter',htmlentities($_POST['chapterName']));
+    $questionQ->bindValue(':chapter', htmlentities($_POST['chapterName']));
     $questionQ->execute();
     $questions = $questionQ->fetchAll();
     $alp = ['A', 'B', 'C', 'D'];
@@ -43,32 +43,32 @@ if (isset($_POST['chapterSearch'])) {
 
     <?php if (!isset($_POST['chapterSearch'])) : ?>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="container body-pos">
-            <div class="row">
-                <div class="col-md-5 mr-3 mr-md-0">
-                    <div class="form-group">
-                        <label for="chapterName">Chapter</label>
-                        <select class="custom-select" name="chapterName" id="chapterName">
-                            <?php foreach ($chapters as $chapter) : ?>
-                                <option value="<?= $chapter['chapter'] ?>"><?= $chapter['chapter'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
+            <div class="container body-pos">
+                <div class="row">
+                    <div class="col-md-5 mr-3 mr-md-0">
+                        <div class="form-group">
+                            <label for="chapterName">Chapter</label>
+                            <select class="custom-select" name="chapterName" id="chapterName">
+                                <?php foreach ($chapters as $chapter) : ?>
+                                    <option value="<?= $chapter['chapter'] ?>"><?= $chapter['chapter'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <input type="submit" name="chapterSearch" value="Search" class="btn btn-outline-primary">
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" name="chapterSearch" value="Search" class="btn btn-outline-primary">
+                    </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
         </form>
     <?php endif; ?>
     <?php
     if (isset($_POST['chapterSearch'])) : ?>
         <form id="mainForm" action="" method="post"></form>
-        <input type="hidden" name="currentChapter" id = "currentChapter" value = "<?=$_POST['chapterName']?>">
+        <input type="hidden" name="currentChapter" id="currentChapter" value="<?= $_POST['chapterName'] ?>">
         <div class="container">
             <?php $count = 1;
             foreach ($questions as $question) : ?>
@@ -77,12 +77,21 @@ if (isset($_POST['chapterSearch'])) {
                                             } else {
                                                 echo "fadeIn";
                                             } ?>">
+                
                     <div class=" col-md body-pos">
                         <div class="row mb-5 <?php if ($question['code'] == '') {
                                                     echo 'width-56';
                                                 } ?>">
                             <h2><span id="count"><?php echo $count . '</span>' . '. ' . $question['question']; ?></h2>
                         </div>
+
+                        <?php if ($question['code'] != '') : ?>
+                    <div class="col-md pl-4 pt-3 pb-2 dis-code-mobile" style=" background-color:#F0F0F0;margin-left:-8px;margin-top:-20px">
+                        <pre><code class = "c++"><?= $question['code'] ?></code></pre>
+
+                    </div>
+                <?php endif; ?>
+
                         <?php for ($i = 1; $i <= 4; $i++) :
                             if ($question['op' . $i] == '') {
                                 break;
@@ -98,7 +107,7 @@ if (isset($_POST['chapterSearch'])) {
                                 <input type="hidden" name="<?= 'q' . $count ?>" id="" value="<?= $i ?>">
                             </div>
                         <?php endfor; ?>
-                        <div class="row mt-4">
+                        <div class="row mt-4 mb-2">
                             <?php if ($count != 1) : ?>
                                 <button id="next" type="button" onclick="pre(this)" class="btn btn-outline-primary px-5 mr-3">Pre</button>
                             <?php endif; ?>
@@ -111,11 +120,11 @@ if (isset($_POST['chapterSearch'])) {
                     </div>
 
                     <?php if ($question['code'] != '') : ?>
-                        <div class="col-md pl-5 pt-5" style="margin-top:12%; margin-bottom:-1%; background-color:#F0F0F0">
-                            <pre><code class = "c++"><?= $question['code'] ?></code></pre>
+                                    <div class="col-md pl-5 pt-5 dis-code-pc" style="margin-top:12%; margin-bottom:-1%; background-color:#F0F0F0">
+                                        <pre><code class = "c++"><?= $question['code'] ?></code></pre>
 
-                        </div>
-                    <?php endif; ?>
+                                    </div>
+                            <?php endif; ?>
                 </div>
                 <?php
                 $count++;
