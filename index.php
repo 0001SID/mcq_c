@@ -68,6 +68,7 @@ if (isset($_POST['chapterSearch'])) {
     <?php
     if (isset($_POST['chapterSearch'])) : ?>
         <form id="mainForm" action="" method="post"></form>
+        <input type="hidden" name="currentChapter" id = "currentChapter" value = "<?=$_POST['chapterName']?>">
         <div class="container">
             <?php $count = 1;
             foreach ($questions as $question) : ?>

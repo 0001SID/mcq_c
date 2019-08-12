@@ -1,7 +1,8 @@
 <?php
 if(isset($_POST['submit'])){
     require "./db/connection.php";
-    $questionQ = $conn->prepare("select * from questions");
+    $questionQ = $conn->prepare("select * from questions where chapter = :chapter");
+    $questionQ->bindValue(':chapter',htmlentities($_POST['chapterName']));
     $questionQ->execute();
     $questions = $questionQ->fetchAll();
     $res = 0;
@@ -12,6 +13,7 @@ if(isset($_POST['submit'])){
             }
         }
     }
-    echo $res;
+    echo json_encode($res);
+
 }
 ?>

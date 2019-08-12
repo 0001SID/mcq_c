@@ -46,6 +46,7 @@ function pre(selected) {
 
 }
 function submit(selected) {
+    givenAnswers.chapterName = document.getElementById('currentChapter').value;
     $.ajax({
         type: 'POST',
         data: givenAnswers,
