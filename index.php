@@ -107,7 +107,7 @@ if (isset($_POST['chapterSearch'])) {
                                 <input type="hidden" name="<?= 'q' . $count ?>" id="" value="<?= $i ?>">
                             </div>
                         <?php endfor; ?>
-                        <div class="row mt-4 mb-2">
+                        <div class="row mt-4 mb-5">
                             <?php if ($count != 1) : ?>
                                 <button id="next" type="button" onclick="pre(this)" class="btn btn-outline-primary px-5 mr-3">Pre</button>
                             <?php endif; ?>
